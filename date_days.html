@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <title>Moment.js Fun Activities</title>
+    <script type="text/JavaScript" src="https://MomentJS.com/downloads/moment.js"></script>
+    <style>
+        body {
+            background-color: rgb(78, 101, 235);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+        }
+
+        .page {
+            margin: auto;
+            margin-top: 5%;
+            padding: 10px;
+            padding-top: 3%;
+            width: 60%;
+            height: 75%;
+            border: 3px solid #694e4e;
+            background-color: rgb(144, 192, 214);
+            border-radius: 20px;
+            box-shadow: 10px 5px 5px rgba(10, 10, 10, 0.12);
+            text-align: center;
+        }
+
+        #button {
+            align-items: center;
+            appearance: none;
+            background-image: radial-gradient(100% 100% at 100% 0, #efff5a 0, #e2ff3e 100%);
+            border: 0;
+            border-radius: 6px;
+            box-shadow: rgba(60, 66, 35, 0.4) 0 2px 4px, rgba(57, 66, 35, 0.3) 0 7px 13px -3px, rgba(103, 111, 58, 0.5) 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: rgb(17, 16, 16);
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono", monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s, transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow, transform;
+            font-size: 18px;
+        }
+
+        #button:focus {
+            box-shadow: #bce03c 0 0 0 1.5px inset, rgba(193, 196, 64, 0.4) 0 2px 4px, rgba(66, 66, 35, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+        }
+
+        #button:hover {
+            box-shadow: rgba(61, 66, 35, 0.4) 0 4px 8px, rgba(55, 66, 35, 0.3) 0 7px 13px -3px, #bce03c 0 -3px 0 inset;
+            transform: translateY(-2px);
+        }
+
+        #button:active {
+            box-shadow: #dde03c 0 3px 7px inset;
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <h2><u>55 days from now?</u></h2>
+        <button id="button" onclick="getdate()">Click Me</button>
+        <br><br>
+        <b>Date will be:</b>
+        <div id="55days"></div>
+        <br>
+        <hr>
+        <h2><u>How many days left?</u></h2>
+        Enter Your Birthday<br><br>
+        Days <input type="text" name="" id="day"><br>
+        <br>
+        Month <input type="text" name="" id="month"><br>
+       <br>
+        <button id="button" onclick="getdays()">Click Me</button>
+        <br>
+        <br>
+        <b>Days Left:</b>
+        <div id="left"></div>
+    </div>
+
+
+</body>
+<script type="text/JavaScript">
+
+        async function getdate() {
+
+        document.getElementById("55days").innerHTML = (moment().add(55, 'days').calendar());
+
+    }
+
+
+        async function getdays() {
+        let nday = document.getElementById("day").value;
+        let nmonth = document.getElementById("month").value;
+        
+       /* var date1 = moment('2022-03-04');*/
+        var date2 = moment('2022' + '-' + nmonth + '-' + nday);
+        var date1 = moment();
+        var diff = date2.diff(date1, "days");
+
+        if(diff<0)
+        {
+            diff=365+(diff*-1);
+        }
+
+        document.getElementById("left").innerHTML = diff;
+
+    }
+
+</script>
+
+</html>
